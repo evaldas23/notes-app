@@ -1,3 +1,5 @@
+'use strict'
+
 const titleElement = document.querySelector('#note-title')
 const dateElement = document.querySelector('#last-edited')
 const bodyElement = document.querySelector('#note-body')
@@ -9,7 +11,7 @@ let note = notes.find(function (note) {
 })
 if (!note) {
     location.assign('/index.html')
-}
+} 
 
 titleElement.value = note.title
 bodyElement.value = note.body
