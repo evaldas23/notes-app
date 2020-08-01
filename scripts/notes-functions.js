@@ -3,11 +3,12 @@
 // Read existing notes from localStorage
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes')
+
     try {
         return notesJSON ? JSON.parse(notesJSON) : []
-    } catch (error) {
+    } catch (e) {
         return []
-    }
+    } 
 }
 
 // Save the notes to localStorage
@@ -15,8 +16,8 @@ const saveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
 }
 
-//Remove a note from the list
-const removeNote =  (id) => {
+// Remove a note from the list
+const removeNote = (id) => {
     const noteIndex = notes.findIndex((note) => note.id === id)
 
     if (noteIndex > -1) {
@@ -80,15 +81,13 @@ const sortNotes = (notes, sortBy) => {
             } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
                 return 1
             } else {
-                return 0 
+                return 0
             }
         })
-    }
-    else {
+    } else {
         return notes
     }
 }
-
 
 // Render application notes
 const renderNotes = (notes, filters) => {
@@ -104,5 +103,6 @@ const renderNotes = (notes, filters) => {
 }
 
 // Generate the last edited message
-
-const generateLastEdited = (timestamp) => `Last edited ${moment(timestamp).fromNow()}`
+const generateLastEdited = (timestamp) => {
+    return `Last edited ${moment(timestamp).fromNow()}`
+}
